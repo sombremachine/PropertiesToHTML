@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<meta charset="UTF-8"/>
+    <title>Bootstrap 101 Template</title>
+	  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="css/dopstyle.css" rel="stylesheet" media="screen">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+
+
+  </head>
+  <body>
+	<div class="container border-container">
+		<div class="row">
+            <h1><p class="text-center">Резюме</p></h1>
+		</div>
+		<div class="row">
+            <h2><p class="text-center">на должность Java-стажер</p></h2>
+        </div>
+		<div class="row">
+		  <div class="col-md-6 col-sm-6">
+                <h3>Информация о себе:</h3>
+                <br>ФИО: ${lastName} ${secondName} ${firstName}
+
+		  </div>
+		  <div class="col-md-6 col-sm-6">
+			<img src="pic.jpg" class="img-rounded" alt="Cinque Terre"> 
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="col-md-12 col-sm-12">
+				<h3>Цель:</h3>
+			  <ul>
+				  <#list goals as goal>
+				  <li>${goal}
+				  </#list>
+			  </ul>
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="col-md-12 col-sm-12">
+				<h3>Опыт работы</h3>
+			  <ul>
+				  <#list workExperience as exp>
+				  <li>${exp}
+				  </#list>
+			  </ul>
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="col-md-12 col-sm-12">
+				<h3>Образование</h3>
+			  <ul>
+				  <#list education as educationItem>
+				  <li>${educationItem}
+				  </#list>
+			  </ul>
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="col-md-12 col-sm-12">
+				<h3>Доп. образование и курсы:</h3>
+
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="col-md-12 col-sm-12">
+				<h3>Навыки:</h3>
+			  <ul>
+				  <#list skills as skill>
+				  <li>${skill}
+				  </#list>
+			  </ul>
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="col-md-12 col-sm-12">
+				<h3>Пример кода:</h3>
+			  <ul>
+				  <#list codeSample as codeSampleItem>
+				  <li>${codeSampleItem}
+				  </#list>
+			  </ul>
+		  </div>
+		</div>
+	</div>
+
+     <!--jQuery (necessary for Bootstrap's JavaScript plugins)-->
+    <script src="//code.jquery.com/jquery.js"></script>
+     <!--Include all compiled plugins (below), or include individual files as needed-->
+    <script src="js/bootstrap.min.js"></script>
+
+  </body>
+</html>
