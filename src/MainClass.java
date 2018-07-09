@@ -8,7 +8,7 @@ import view.ViewToHTMLImpl;
 
 public class MainClass {
     public static void main(String... args){
-        String inFileName  = "default.properties";
+        String inFileName  = null;
         String outFileName = null;
 
         if (args.length > 0) {
@@ -29,19 +29,20 @@ public class MainClass {
                 }
             }
             View view = new ViewToHTMLImpl(outFileName);
-//        View view   =   new ViewToConsole();
+//            View view   =   new ViewToConsole();
             Model model = new ModelImpl(inFileName);
             Controller controller = new ControllerImpl();
             controller.setModel(model);
             controller.setView(view);
             controller.generateHTML();
         }else{
-            System.out.println("Usage: PropertiesToHTML -i input_file -o output_file");
+            System.out.println("Использование: java -jar PropertiesToHTML.jar -i input_file -o output_file");
             System.out.println();
-            System.out.println("\tinput_file \t- path to input .proprties file");
-            System.out.println("\toutput_file\t- path to output .html file");
+            System.out.println("\tinput_file \t- путь к входному файлу .proprties");
+            System.out.println("\toutput_file\t- путь к генерируемому .html");
             System.out.println();
-            System.out.println("with no output_file write to standard output");
+            System.out.println("Если выходной файл не задан результат выводится в стандартный поток вывода.");
+            System.out.println("Для корректного отображения сгенерированного файла в браузере требуется интернет подключение.");
         }
     }
 }

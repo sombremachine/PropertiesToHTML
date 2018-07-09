@@ -3,6 +3,8 @@ package dao;
 import bean.User;
 
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -17,22 +19,31 @@ public class PropertiesFileUserDAO implements UserDAO {
 
     private List<String> getListField(String key){
         ArrayList<String> result = null;
-        String propertyValue = null;
+        String propertyValue;
         propertyValue = property.getProperty(key);
-        result = new ArrayList<>();
-        for (String value: propertyValue.split("\n")) {
-            result.add(value);
+        if (propertyValue != null) {
+            result = new ArrayList<>();
+            for (String value : propertyValue.split("\n")) {
+                result.add(value);
+            }
+        }else{
+            System.err.println("Ключ " + key + " не найден в файле свойств, поле оставлено пустым");
         }
         return result;
     }
 
     private String getField(String key) {
-        return property.getProperty(key);
+        String propertyValue;
+        propertyValue = property.getProperty(key);
+        if (propertyValue == null) {
+            System.err.println("Ключ " + key + " не найден в файле свойств, поле оставлено пустым");
+        }
+        return propertyValue;
     }
 
     @Override
     public User getUserData() {
-        User user = new User();
+        User user = null;
         FileInputStream fis;
         Reader reader = null;
         try {
@@ -40,26 +51,36 @@ public class PropertiesFileUserDAO implements UserDAO {
             reader = new InputStreamReader(fis, "UTF-8");
         } catch (FileNotFoundException e) {
 //            e.printStackTrace();
-            System.out.println("Файл " + fileName +" не найден");
+            System.err.println("Файл " + fileName +" не найден");
+            return null;
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            return null;
         }
         try {
             //TODO: check null
             property.load(reader);
         } catch (IOException e) {
 //            e.printStackTrace();
-            System.out.println("Ошибка при чтении файла " + fileName);
+            System.err.println("Ошибка при чтении файла " + fileName);
+            return null;
         }
-        user.setFirstName(getField("firstName"));
-        user.setSecondName(getField("secondName"));
-        user.setLastName(getField("lastName"));
-        user.setGoals(getListField("goals"));
-        user.setWorkExperience(getListField("workExperience"));
-        user.setEducation(getListField("education"));
-        user.setAdditionalAducation(getListField("additionalEducation"));
-        user.setSkills(getListField("skills"));
-        user.setCodeSample(getListField("codeSample"));
+        if (! property.isEmpty()) {
+            user = new User();
+            user.setFirstName(getField("firstName"));
+            user.setSecondName(getField("secondName"));
+            user.setLastName(getField("lastName"));
+            user.setBirthDate(getField("birthDate"));
+            user.setPhone(getListField("phone"));
+            user.setEmail(getListField("email"));
+            user.setGoals(getListField("goals"));
+            user.setWorkExperience(getListField("workExperience"));
+            user.setEducation(getListField("education"));
+            user.setAdditionalEducation(getListField("additionalEducation"));
+            user.setSkills(getListField("skills"));
+            user.setCodeSample(getListField("codeSample"));
+            user.setImgSrc(getField("imgSrc"));
+        }
         return user;
     }
 }

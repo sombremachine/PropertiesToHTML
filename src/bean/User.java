@@ -7,6 +7,10 @@ public class User implements Serializable {
     private String firstName;
     private String secondName;
     private String lastName;
+    private String birthDate;
+    private String imgSrc;
+    private List<String> phone;
+    private List<String> email;
     private List<String> goals;
     private List<String> workExperience;
     private List<String> education;
@@ -15,6 +19,38 @@ public class User implements Serializable {
     private List<String> codeSample;
 
     public User() {
+    }
+
+    public String getImgSrc() {
+        return imgSrc;
+    }
+
+    public void setImgSrc(String imgSrc) {
+        this.imgSrc = imgSrc;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public List<String> getPhone() {
+        return phone;
+    }
+
+    public void setPhone(List<String> phone) {
+        this.phone = phone;
+    }
+
+    public List<String> getEmail() {
+        return email;
+    }
+
+    public void setEmail(List<String> email) {
+        this.email = email;
     }
 
     public String getFirstName() {
@@ -65,11 +101,11 @@ public class User implements Serializable {
         this.education = education;
     }
 
-    public List<String> getAdditionalAducation() {
+    public List<String> getAdditionalEducation() {
         return additionalEducation;
     }
 
-    public void setAdditionalAducation(List<String> additionalAducation) {
+    public void setAdditionalEducation(List<String> additionalAducation) {
         this.additionalEducation = additionalAducation;
     }
 

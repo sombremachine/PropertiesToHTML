@@ -8,8 +8,10 @@ public class ControllerImpl implements Controller {
     private View view;
     @Override
     public void generateHTML() {
-        model.loadUserData();
-        view.update(model.getModelData());
+        if ((model != null)&&(view != null)) {
+            model.loadUserData();
+            view.update(model.getModelData());
+        }
     }
 
     @Override

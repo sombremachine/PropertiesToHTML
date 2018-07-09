@@ -2,9 +2,15 @@ package view;
 
 import bean.User;
 
+/*
+Это конечно можно было сделать в методе toString класса user.
+Но так интереснее =)
+ */
+
 public class ViewToConsole implements View {
     @Override
     public void update(User user) {
+        System.out.println(user.getImgSrc());
         System.out.println("ФИО:");
         System.out.print(user.getLastName() + " ");
         System.out.print(user.getFirstName() + " ");
@@ -22,7 +28,7 @@ public class ViewToConsole implements View {
             System.out.println(" - " + value);
         }
         System.out.println("Доп. образование:");
-        for (String value: user.getAdditionalAducation()){
+        for (String value: user.getAdditionalEducation()){
             System.out.println(" - " + value);
         }
         System.out.println("Навыки:");

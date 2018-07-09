@@ -14,7 +14,9 @@ public class ModelImpl implements Model{
 
     @Override
     public void loadUserData() {
-        modelData = dao.getUserData();
+        if (dao != null) {
+            modelData = dao.getUserData();
+        }
     }
 
     @Override
