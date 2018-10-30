@@ -7,11 +7,20 @@ import org.apache.log4j.PropertyConfigurator;
 import view.View;
 import view.ViewToHTMLImpl;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class MainClass {
     private static final Logger log = Logger.getLogger(MainClass.class);
 
     static {
-        PropertyConfigurator.configure(MainClass.class.getResource("/Resources/log4j.properties"));
+        Path path = Paths.get("./log4j.properties");
+        if (Files.exists(path)) {
+            PropertyConfigurator.configure(path.toString());
+        } else {
+            PropertyConfigurator.configure(MainClass.class.getResource("/Resources/log4j.properties"));
+        }
     }
 
     public static void main(String... args) {
