@@ -1,9 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="PropertiesToHTML:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/PropertiesToHTML_jar</output-path>
-    <root id="archive" name="PropertiesToHTML.jar">
-      <element id="module-output" name="PropertiesToHTML" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/freemarker/freemarker/2.3.23/freemarker-2.3.23.jar" path-in-jar="/" />
-    </root>
-  </artifact>
-</component>
