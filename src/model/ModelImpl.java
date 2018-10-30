@@ -4,7 +4,7 @@ import bean.User;
 import dao.UserDAO;
 import dao.UserDAOFactory;
 
-public class ModelImpl implements Model{
+public class ModelImpl implements Model {
     private UserDAO dao;
     private User modelData = null;
 

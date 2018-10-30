@@ -2,13 +2,20 @@ import controller.Controller;
 import controller.ControllerImpl;
 import model.Model;
 import model.ModelImpl;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import view.View;
-import view.ViewToConsole;
 import view.ViewToHTMLImpl;
 
 public class MainClass {
-    public static void main(String... args){
-        String inFileName  = null;
+    private static final Logger log = Logger.getLogger(MainClass.class);
+
+    static {
+        PropertyConfigurator.configure(MainClass.class.getResource("/Resources/log4j.properties"));
+    }
+
+    public static void main(String... args) {
+        String inFileName = null;
         String outFileName = null;
 
         if (args.length > 0) {
@@ -35,7 +42,8 @@ public class MainClass {
             controller.setModel(model);
             controller.setView(view);
             controller.generateHTML();
-        }else{
+        } else {
+            log.debug("Имя входного файла не задано");
             System.out.println("Использование: java -jar PropertiesToHTML.jar -i input_file -o output_file");
             System.out.println();
             System.out.println("\tinput_file \t- путь к входному файлу .proprties");

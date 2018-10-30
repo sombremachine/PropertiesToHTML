@@ -1,16 +1,17 @@
 package view;
 
 import bean.User;
-import freemarker.core.Environment;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
+import org.apache.log4j.Logger;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 public class ViewToHTMLImpl implements View {
+    private static final Logger log = Logger.getLogger(ViewToHTMLImpl.class);
     private String outFileName;
 
     public ViewToHTMLImpl(String outFileName) {
@@ -32,7 +33,8 @@ public class ViewToHTMLImpl implements View {
                 template = configuration.getTemplate("Resources/index.html");
             } catch (IOException e) {
                 //e.printStackTrace();
-                System.err.println("Файл шаблона не найден");
+//                System.err.println("Файл шаблона не найден");
+                log.error("Файл шаблона не найден");
                 return;
             }
 
@@ -45,31 +47,29 @@ public class ViewToHTMLImpl implements View {
                     writer = new OutputStreamWriter(new FileOutputStream(new File(outFileName)), StandardCharsets.UTF_8);
                 } catch (IOException e) {
                     //e.printStackTrace();
-                    System.err.println("Невозможно создать файл " + outFileName);
+//                    System.err.println("Невозможно создать файл " + outFileName);
+                    log.error("Невозможно создать файл " + outFileName);
                     return;
                 }
             }
+
             try {
                 template.process(user, writer);
+                writer.flush();
+                writer.close();
             } catch (TemplateException e) {
                 //e.printStackTrace();
                 System.err.println("Ошибка при обработке шаблона");
                 return;
             } catch (IOException e) {
                 //e.printStackTrace();
-                System.err.println("Невозможно произвести запись в выходной поток");
+//                System.err.println("Невозможно произвести запись в выходной поток");
+                log.error("Невозможно произвести запись в выходной поток");
                 return;
             }
-            try {
-                writer.flush();
-                writer.close();
-            } catch (IOException e) {
-                //e.printStackTrace();
-                System.err.println("Невозможно произвести запись в выходной поток");
-                return;
-            }
-        }else{
-            System.err.println("Данные из входного файла не прочитаны.\n");
+        } else {
+//            System.err.println("Данные из входного файла не прочитаны.");
+            log.error("Данные из входного файла не прочитаны.");
         }
     }
 }

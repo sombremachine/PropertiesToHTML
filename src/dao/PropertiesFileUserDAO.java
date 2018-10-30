@@ -1,15 +1,15 @@
 package dao;
 
 import bean.User;
+import org.apache.log4j.Logger;
 
 import java.io.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
 public class PropertiesFileUserDAO implements UserDAO {
+    private static final Logger log = Logger.getLogger(PropertiesFileUserDAO.class);
     private Properties property = new Properties();
     private String fileName;
 
@@ -17,7 +17,7 @@ public class PropertiesFileUserDAO implements UserDAO {
         this.fileName = fileName;
     }
 
-    private List<String> getListField(String key){
+    private List<String> getListField(String key) {
         ArrayList<String> result = null;
         String propertyValue;
         propertyValue = property.getProperty(key);
@@ -26,8 +26,9 @@ public class PropertiesFileUserDAO implements UserDAO {
             for (String value : propertyValue.split("\n")) {
                 result.add(value);
             }
-        }else{
-            System.err.println("Ключ " + key + " не найден в файле свойств, поле оставлено пустым");
+        } else {
+//            System.err.println("Ключ " + key + " не найден в файле свойств, поле оставлено пустым");
+            log.error("Ключ " + key + " не найден в файле свойств, поле оставлено пустым");
         }
         return result;
     }
@@ -36,7 +37,8 @@ public class PropertiesFileUserDAO implements UserDAO {
         String propertyValue;
         propertyValue = property.getProperty(key);
         if (propertyValue == null) {
-            System.err.println("Ключ " + key + " не найден в файле свойств, поле оставлено пустым");
+//            System.err.println("Ключ " + key + " не найден в файле свойств, поле оставлено пустым");
+            log.error("Ключ " + key + " не найден в файле свойств, поле оставлено пустым");
         }
         return propertyValue;
     }
@@ -51,7 +53,8 @@ public class PropertiesFileUserDAO implements UserDAO {
             reader = new InputStreamReader(fis, "UTF-8");
         } catch (FileNotFoundException e) {
 //            e.printStackTrace();
-            System.err.println("Файл " + fileName +" не найден");
+//            System.err.println("Файл " + fileName +" не найден");
+            log.error("Файл " + fileName + " не найден");
             return null;
         } catch (UnsupportedEncodingException e) {
 //            e.printStackTrace();
@@ -62,10 +65,11 @@ public class PropertiesFileUserDAO implements UserDAO {
             property.load(reader);
         } catch (IOException e) {
 //            e.printStackTrace();
-            System.err.println("Ошибка при чтении файла " + fileName);
+//            System.err.println("Ошибка при чтении файла " + fileName);
+            log.error("Ошибка при чтении файла " + fileName);
             return null;
         }
-        if (! property.isEmpty()) {
+        if (!property.isEmpty()) {
             user = new User();
             user.setFirstName(getField("firstName"));
             user.setSecondName(getField("secondName"));
