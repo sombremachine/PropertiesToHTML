@@ -1,6 +1,6 @@
-package main.java.dao;
+package dao;
 
-import main.java.bean.User;
+import bean.User;
 import org.apache.log4j.Logger;
 
 import java.io.*;

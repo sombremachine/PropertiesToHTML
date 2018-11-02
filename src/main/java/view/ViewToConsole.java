@@ -1,6 +1,6 @@
-package main.java.view;
+package view;
 
-import main.java.bean.User;
+import bean.User;
 
 /*
 Это конечно можно было сделать в методе toString класса user.

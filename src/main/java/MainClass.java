@@ -1,13 +1,13 @@
-package main.java;
 
-import main.java.controller.Controller;
-import main.java.controller.ControllerImpl;
-import main.java.model.Model;
-import main.java.model.ModelImpl;
+
+import controller.Controller;
+import controller.ControllerImpl;
+import model.Model;
+import model.ModelImpl;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-import main.java.view.View;
-import main.java.view.ViewToHTMLImpl;
+import view.View;
+import view.ViewToHTMLImpl;
 
 import java.nio.file.Files;
 import java.nio.file.Path;

@@ -1,7 +1,7 @@
-package main.java.controller;
+package controller;
 
-import main.java.model.Model;
-import main.java.view.View;
+import model.Model;
+import view.View;
 
 public class ControllerImpl implements Controller {
     private Model model;

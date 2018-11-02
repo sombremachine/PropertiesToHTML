@@ -1,6 +1,6 @@
-package main.java.view;
+package view;
 
-import main.java.bean.User;
+import bean.User;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;

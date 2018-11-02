@@ -1,6 +1,6 @@
-package main.java.view;
+package view;
 
-import main.java.bean.User;
+import bean.User;
 
 public interface View {
     void update(User user);
