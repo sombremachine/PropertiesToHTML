@@ -33,12 +33,20 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>junit</groupId>-->
+			<!--<artifactId>junit</artifactId>-->
+			<!--<version>4.12</version>-->
+		<!--</dependency>-->
 	</dependencies>
 
 	<build>
 		<!-- Output filename in directory ./target -->
 		<finalName>PropertiesToHTML</finalName>
-		<sourceDirectory>src</sourceDirectory>
+
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<testSourceDirectory>src/test/java</testSourceDirectory>
+
 		<!-- copy this resources into archive -->
 		<resources>
 			<resource>
@@ -51,10 +59,11 @@
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-compiler-plugin</artifactId>
-			<version>2.3.2</version>
+			<version>3.5.1</version>
 			<configuration>
 				<source>${jdk.version}</source>
 				<target>${jdk.version}</target>
+				<debug>true</debug>
 			</configuration>
 		</plugin>
 
@@ -67,7 +76,7 @@
 					<manifest>
 						<addClasspath>true</addClasspath>
 						<mainClass>main.java.MainClass</mainClass>
-						<packageName></packageName>
+						<!--<packageName></packageName>-->
 					</manifest>
 				</archive>
 			</configuration>

@@ -1,12 +1,13 @@
 package dao;
 
+import dao.UserDAO;
 import org.apache.log4j.Logger;
 
 public class UserDAOFactory {
     private static final Logger log = Logger.getLogger(UserDAOFactory.class);
 
-    public static dao.UserDAO getUserDAO(String fileName){
-        dao.UserDAO dao = null;
+    public static UserDAO getUserDAO(String fileName){
+        UserDAO dao = null;
         if ((fileName != null)&&(!fileName.isEmpty())) {
             String fileExtention = fileName.substring(fileName.lastIndexOf('.') + 1);
             switch (fileExtention.toLowerCase()) {
