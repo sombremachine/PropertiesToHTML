@@ -1,8 +1,8 @@
-package model;
+package main.java.model;
 
-import bean.User;
-import dao.UserDAO;
-import dao.UserDAOFactory;
+import main.java.bean.User;
+import main.java.dao.UserDAO;
+import main.java.dao.UserDAOFactory;
 
 public class ModelImpl implements Model {
     private UserDAO dao;

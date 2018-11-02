@@ -1,11 +1,13 @@
-import controller.Controller;
-import controller.ControllerImpl;
-import model.Model;
-import model.ModelImpl;
+package main.java;
+
+import main.java.controller.Controller;
+import main.java.controller.ControllerImpl;
+import main.java.model.Model;
+import main.java.model.ModelImpl;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-import view.View;
-import view.ViewToHTMLImpl;
+import main.java.view.View;
+import main.java.view.ViewToHTMLImpl;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -19,7 +21,7 @@ public class MainClass {
         if (Files.exists(path)) {
             PropertyConfigurator.configure(path.toString());
         } else {
-            PropertyConfigurator.configure(MainClass.class.getResource("/Resources/log4j.properties"));
+            PropertyConfigurator.configure(MainClass.class.getResource("/main/java/Resources/log4j.properties"));
         }
     }
 
@@ -45,7 +47,7 @@ public class MainClass {
                 }
             }
             View view = new ViewToHTMLImpl(outFileName);
-//            View view   =   new ViewToConsole();
+//            View main.java.view   =   new ViewToConsole();
             Model model = new ModelImpl(inFileName);
             Controller controller = new ControllerImpl();
             controller.setModel(model);

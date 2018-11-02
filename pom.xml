@@ -13,6 +13,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.8</jdk.version>
+		<junit.version>4.12</junit.version>
 	</properties>
 
 	<dependencies>
@@ -26,6 +27,12 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -35,7 +42,7 @@
 		<!-- copy this resources into archive -->
 		<resources>
 			<resource>
-				<directory>src/Resources</directory>
+				<directory>src/main/java/Resources</directory>
 				<targetPath>Resources</targetPath>
 			</resource>
 		</resources>
@@ -59,7 +66,7 @@
 				<archive>
 					<manifest>
 						<addClasspath>true</addClasspath>
-						<mainClass>MainClass</mainClass>
+						<mainClass>main.java.MainClass</mainClass>
 						<packageName></packageName>
 					</manifest>
 				</archive>

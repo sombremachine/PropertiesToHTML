@@ -1,6 +1,6 @@
-package view;
+package main.java.view;
 
-import bean.User;
+import main.java.bean.User;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -30,7 +30,7 @@ public class ViewToHTMLImpl implements View {
             //Instantiate template
             Template template = null;
             try {
-                template = configuration.getTemplate("Resources/index.html");
+                template = configuration.getTemplate("main/java/Resources/index.html");
             } catch (IOException e) {
                 //e.printStackTrace();
 //                System.err.println("Файл шаблона не найден");

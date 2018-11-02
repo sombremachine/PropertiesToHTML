@@ -1,6 +1,6 @@
-package dao;
+package main.java.dao;
 
-import bean.User;
+import main.java.bean.User;
 
 public interface UserDAO {
     User getUserData();

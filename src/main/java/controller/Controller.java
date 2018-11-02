@@ -1,7 +1,7 @@
-package controller;
+package main.java.controller;
 
-import model.Model;
-import view.View;
+import main.java.model.Model;
+import main.java.view.View;
 
 public interface Controller {
     void generateHTML();

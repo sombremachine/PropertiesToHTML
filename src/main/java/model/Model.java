@@ -1,6 +1,6 @@
-package model;
+package main.java.model;
 
-import bean.User;
+import main.java.bean.User;
 
 public interface Model {
     void loadUserData();
