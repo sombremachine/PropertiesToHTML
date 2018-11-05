@@ -21,7 +21,7 @@ public class MainClass {
         if (Files.exists(path)) {
             PropertyConfigurator.configure(path.toString());
         } else {
-            PropertyConfigurator.configure(MainClass.class.getResource("Resources/log4j.properties"));
+            PropertyConfigurator.configure(MainClass.class.getResource("/Resources/log4j.properties"));
         }
     }
 

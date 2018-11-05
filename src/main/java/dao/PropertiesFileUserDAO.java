@@ -4,7 +4,7 @@ import bean.User;
 import org.apache.log4j.Logger;
 
 import java.io.*;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
@@ -18,24 +18,20 @@ public class PropertiesFileUserDAO implements UserDAO {
     }
 
     private List<String> getListField(String key) {
-        ArrayList<String> result = null;
-        String propertyValue;
-        propertyValue = property.getProperty(key);
+//        ArrayList<String> result = null;
+        String propertyValue = property.getProperty(key);
         if (propertyValue != null) {
-            result = new ArrayList<>();
-            for (String value : propertyValue.split("\n")) {
-                result.add(value);
-            }
+            return Arrays.asList(propertyValue.split("\n"));
         } else {
 //            System.err.println("Ключ " + key + " не найден в файле свойств, поле оставлено пустым");
             log.error("Ключ " + key + " не найден в файле свойств, поле оставлено пустым");
+            return null;
         }
-        return result;
+//        return result;
     }
 
     private String getField(String key) {
-        String propertyValue;
-        propertyValue = property.getProperty(key);
+        String propertyValue = property.getProperty(key);
         if (propertyValue == null) {
 //            System.err.println("Ключ " + key + " не найден в файле свойств, поле оставлено пустым");
             log.error("Ключ " + key + " не найден в файле свойств, поле оставлено пустым");
@@ -55,7 +51,8 @@ public class PropertiesFileUserDAO implements UserDAO {
 //            e.printStackTrace();
 //            System.err.println("Файл " + fileName +" не найден");
             log.error("Файл " + fileName + " не найден");
-            return null;
+//            return null;
+            throw new RuntimeException("Файл " + fileName + " не найден");
         } catch (UnsupportedEncodingException e) {
 //            e.printStackTrace();
             return null;

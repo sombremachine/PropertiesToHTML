@@ -1,6 +1,5 @@
 package dao;
 
-import dao.UserDAO;
 import org.apache.log4j.Logger;
 
 public class UserDAOFactory {
@@ -17,21 +16,15 @@ public class UserDAOFactory {
                     break;
                 }
                 case "ini": {
-//                    System.out.println("Поддержка ini файлов еще не реализована.");
-                    log.warn("Поддержка ini файлов еще не реализована.");
-                    break;
+                    throw new RuntimeException("Поддержка ini файлов еще не реализована.");
                 }
                 default: {
-//                    System.out.println("Неизвестный формат файла");
-                    log.error("Неизвестный формат файла");
-                    break;
+                    throw new RuntimeException("Неизвестный формат файла.");
                 }
             }
             return dao;
         }else{
-//            System.err.println("Не задано имя входного файла.");
-            log.warn("Не задано имя входного файла.");
-            return null;
+            throw new RuntimeException("Не задано имя входного файла.");
         }
     }
 }

@@ -30,13 +30,14 @@ public class ViewToHTMLImpl implements View {
             //Instantiate template
             Template template = null;
             try {
-                template = configuration.getTemplate("main/java/Resources/index.html");
+                template = configuration.getTemplate("/Resources/index.html");
             } catch (IOException e) {
                 //e.printStackTrace();
 //                System.err.println("Файл шаблона не найден");
                 log.error("Файл шаблона не найден");
                 return;
             }
+
 
             Writer writer = null;
 
