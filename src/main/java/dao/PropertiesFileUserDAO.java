@@ -4,9 +4,9 @@ import bean.User;
 import org.apache.log4j.Logger;
 
 import java.io.*;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class PropertiesFileUserDAO implements UserDAO {
     private static final Logger log = Logger.getLogger(PropertiesFileUserDAO.class);
@@ -15,6 +15,26 @@ public class PropertiesFileUserDAO implements UserDAO {
 
     public PropertiesFileUserDAO(String fileName) {
         this.fileName = fileName;
+    }
+
+    private Map<String, Integer> getMapField(String key) {
+        String propertyValue = property.getProperty(key);
+        if (propertyValue != null) {
+            return Stream.of(propertyValue.split("\n")).collect(HashMap<String, Integer>::new,
+                    (m, c) -> {
+                        String[] splitted = c.split(":");
+                        m.put(splitted[0], (splitted.length > 1) ? Integer.parseInt(splitted[1]) : 0);
+                    },
+                    (m, u) -> {
+                    })
+                    .entrySet()
+                    .stream()
+                    .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+                    .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+        } else {
+            log.error("Ключ " + key + " не найден в файле свойств, поле оставлено пустым");
+            return null;
+        }
     }
 
     private List<String> getListField(String key) {
@@ -75,7 +95,7 @@ public class PropertiesFileUserDAO implements UserDAO {
             user.setPhone(getListField("phone"));
             user.setEmail(getListField("email"));
             user.setGoals(getListField("goals"));
-            user.setWorkExperience(getListField("workExperience"));
+            user.setWorkExperience(getMapField("workExperience"));
             user.setEducation(getListField("education"));
             user.setAdditionalEducation(getListField("additionalEducation"));
             user.setSkills(getListField("skills"));

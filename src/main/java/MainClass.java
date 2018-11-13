@@ -1,5 +1,3 @@
-
-
 import controller.Controller;
 import controller.ControllerImpl;
 import model.Model;
@@ -47,7 +45,7 @@ public class MainClass {
                 }
             }
             View view = new ViewToHTMLImpl(outFileName);
-//            View main.java.view   =   new ViewToConsole();
+//            View view   =   new ViewToConsole();
             Model model = new ModelImpl(inFileName);
             Controller controller = new ControllerImpl();
             controller.setModel(model);

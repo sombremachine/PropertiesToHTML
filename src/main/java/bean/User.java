@@ -2,6 +2,7 @@ package bean;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 public class User implements Serializable {
     private String firstName;
@@ -12,7 +13,7 @@ public class User implements Serializable {
     private List<String> phone;
     private List<String> email;
     private List<String> goals;
-    private List<String> workExperience;
+    private Map<String,Integer> workExperience;
     private List<String> education;
     private List<String> additionalEducation;
     private List<String> skills;
@@ -85,11 +86,11 @@ public class User implements Serializable {
         this.goals = goals;
     }
 
-    public List<String> getWorkExperience() {
+    public Map<String,Integer> getWorkExperience() {
         return workExperience;
     }
 
-    public void setWorkExperience(List<String> workExperience) {
+    public void setWorkExperience(Map<String,Integer> workExperience) {
         this.workExperience = workExperience;
     }
 

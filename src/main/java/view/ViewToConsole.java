@@ -2,6 +2,8 @@ package view;
 
 import bean.User;
 
+import java.util.Map;
+
 /*
 Это конечно можно было сделать в методе toString класса user.
 Но так интереснее =)
@@ -20,8 +22,8 @@ public class ViewToConsole implements View {
             System.out.println(" - " + value);
         }
         System.out.println("Опыт:");
-        for (String value : user.getWorkExperience()) {
-            System.out.println(" - " + value);
+        for (Map.Entry<String, Integer> item: user.getWorkExperience().entrySet()) {
+            System.out.println(" - " + item.getKey() + ":" + item.getValue());
         }
         System.out.println("Образование:");
         for (String value : user.getEducation()) {
