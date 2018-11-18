@@ -5,17 +5,19 @@
 
 Использование:
 
-java -jar PropertiesToHTML.jar -i input_file -o output_file
-
-    input_file  - путь к входному файлу .proprties
-    output_file - путь к генерируемому .html
-
-    Если выходной файл не задан результат выводится в стандартный поток вывода.
+java -jar PropertiesToHTML.jar
 
     Для корректного отображения сгенерированного файла в браузере требуется интернет подключение.
 
+    Веб приложение будет находиться по адресу http://locallhost:8080
+
 Примечания:
     .properties файл должен быть в кодировке UTF-8
+
+    В донном варианте используются файлы part1.properties и part2.properties
+
     если в свойстве должно быть больше одного значения, то они разделяются символом \n
     Поля поддерживающие более одного значения:
-    phone, email, goals, workExperience, education, additionalEducation, skills, codeSample.
+    phone, email, goals, education, additionalEducation, skills, codeSample.
+    Поля поддерживающие ключ, значение значения:
+    workExperience
