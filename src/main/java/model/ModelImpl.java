@@ -6,7 +6,7 @@ import dao.UserDAO;
 import dao.UserDAOFactory;
 import org.apache.log4j.Logger;
 
-public class ModelImpl implements model.Model {
+public class ModelImpl implements Model {
     private static final Logger log = Logger.getLogger(ModelImpl.class);
 
     private UserDAO dao;

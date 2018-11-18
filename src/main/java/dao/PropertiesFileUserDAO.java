@@ -32,7 +32,7 @@ public class PropertiesFileUserDAO implements UserDAO {
                     .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
                     .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
         } else {
-            log.error("Ключ " + key + " не найден в файле свойств, поле оставлено пустым");
+            log.warn("Ключ " + key + " не найден в файле свойств " + fileName + ", поле оставлено пустым");
             return null;
         }
     }
@@ -44,7 +44,7 @@ public class PropertiesFileUserDAO implements UserDAO {
             return Arrays.asList(propertyValue.split("\n"));
         } else {
 //            System.err.println("Ключ " + key + " не найден в файле свойств, поле оставлено пустым");
-            log.error("Ключ " + key + " не найден в файле свойств, поле оставлено пустым");
+            log.warn("Ключ " + key + " не найден в файле свойств " + fileName + ", поле оставлено пустым");
             return null;
         }
 //        return result;
@@ -54,7 +54,7 @@ public class PropertiesFileUserDAO implements UserDAO {
         String propertyValue = property.getProperty(key);
         if (propertyValue == null) {
 //            System.err.println("Ключ " + key + " не найден в файле свойств, поле оставлено пустым");
-            log.error("Ключ " + key + " не найден в файле свойств, поле оставлено пустым");
+            log.warn("Ключ " + key + " не найден в файле свойств " + fileName + ", поле оставлено пустым");
         }
         return propertyValue;
     }
